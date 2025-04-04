@@ -12,12 +12,17 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         message: document.getElementById("message").value,
     };
 
-    emailjs.send("service_w5cwp4r", "template_sqf5oh7", params)
-        .then(response => {
-            alert("We have received your message and will get back to you shortly!");  
-            document.getElementById("contactForm").reset();
-        })
-        .catch(error => {
-            alert("We are unable to recieve your request " + error);
-        });
-});
+    emailjs.send("service_54esn64", "template_sqf5oh7", {
+        from_name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value,
+    })
+    .then(response => {
+        alert("Email Sent Successfully!");
+    })
+    .catch(error => {
+        console.error("Email.js Error:", error); // Log full error in the console
+        alert("Failed to send email. Check the console for details.");
+    });
+    
